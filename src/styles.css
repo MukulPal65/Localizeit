@@ -1,0 +1,215 @@
+@import "tailwindcss";
+
+/* ============================================================
+   LocalizeIt design tokens
+   Brand: warm cream canvas · dark brown type · orange actions
+   Change this file to re-skin the entire product.
+   ============================================================ */
+
+@theme {
+  --font-sans: "Inter", ui-sans-serif, system-ui, -apple-system, sans-serif;
+  --font-heading: "Poppins", "Inter", ui-sans-serif, system-ui, sans-serif;
+
+  /* Canvas */
+  --color-cream: #fdf8f1;
+  --color-cream-2: #f8f0e4;
+  --color-cream-3: #efe4d4;
+  --color-cream-4: #e6d7c3;
+
+  /* Ink — dark brown */
+  --color-brown-950: #23150c;
+  --color-brown-900: #2b1a10;
+  --color-brown-800: #3e2717;
+  --color-brown-700: #553722;
+  --color-brown-600: #6a4830;
+  --color-brown-500: #7a5539;
+  --color-brown-400: #9c7a5c;
+  --color-brown-300: #b79a80;
+  --color-brown-200: #d3bea9;
+  --color-brown-100: #e9dccd;
+
+  /* Accent — orange */
+  --color-orange-700: #b44e08;
+  --color-orange-600: #d9620f;
+  --color-orange-500: #ee7317;
+  --color-orange-400: #f8942f;
+  --color-orange-300: #fbaf63;
+  --color-orange-200: #fdd0a3;
+  --color-orange-100: #fde7d2;
+  --color-orange-50: #fef4e9;
+
+  /* Semantic */
+  --color-success: #477a4b;
+  --color-success-soft: #e7f0e4;
+  --color-warning: #c98a12;
+  --color-warning-soft: #fbf1d9;
+  --color-danger: #be4030;
+  --color-danger-soft: #f9e5e1;
+  --color-info: #4a6d8c;
+  --color-info-soft: #e6eef5;
+
+  /* Depth */
+  --shadow-soft: 0 1px 2px rgb(43 26 16 / 0.04), 0 12px 32px -18px rgb(43 26 16 / 0.18);
+  --shadow-card: 0 1px 2px rgb(43 26 16 / 0.05), 0 6px 18px -12px rgb(43 26 16 / 0.16);
+  --shadow-lift: 0 2px 4px rgb(43 26 16 / 0.06), 0 24px 48px -20px rgb(43 26 16 / 0.28);
+  --shadow-cta: 0 10px 22px -12px rgb(238 115 23 / 0.65);
+}
+
+@layer base {
+  *,
+  ::before,
+  ::after {
+    border-color: var(--color-cream-3);
+  }
+
+  html {
+    scroll-behavior: smooth;
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  body {
+    @apply bg-cream font-sans text-brown-700 antialiased;
+    background-image:
+      radial-gradient(circle at 0% 0%, rgb(238 115 23 / 0.045), transparent 42%),
+      radial-gradient(circle at 100% 10%, rgb(193 154 107 / 0.08), transparent 38%);
+    background-attachment: fixed;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    @apply font-heading font-semibold tracking-tight text-brown-900;
+  }
+
+  ::selection {
+    background: var(--color-orange-200);
+    color: var(--color-brown-900);
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--color-orange-500);
+    outline-offset: 2px;
+    border-radius: 6px;
+  }
+
+  input[type="number"]::-webkit-outer-spin-button,
+  input[type="number"]::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+  }
+
+  input[type="number"] {
+    -moz-appearance: textfield;
+    appearance: textfield;
+  }
+
+  ::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+  }
+  ::-webkit-scrollbar-track {
+    background: transparent;
+  }
+  ::-webkit-scrollbar-thumb {
+    background: var(--color-cream-4);
+    border-radius: 999px;
+    border: 2px solid var(--color-cream);
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background: var(--color-brown-200);
+  }
+}
+
+@layer utilities {
+  .no-scrollbar {
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+  }
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+
+  .safe-bottom {
+    padding-bottom: env(safe-area-inset-bottom);
+  }
+
+  .text-balance {
+    text-wrap: balance;
+  }
+
+  .animate-fade-in {
+    animation: lz-fade-in 0.28s ease-out both;
+  }
+  .animate-slide-up {
+    animation: lz-slide-up 0.36s cubic-bezier(0.16, 1, 0.3, 1) both;
+  }
+  .animate-scale-in {
+    animation: lz-scale-in 0.2s cubic-bezier(0.16, 1, 0.3, 1) both;
+  }
+  .animate-toast {
+    animation: lz-toast 0.3s cubic-bezier(0.16, 1, 0.3, 1) both;
+  }
+  .animate-shimmer {
+    background-size: 200% 100%;
+    animation: lz-shimmer 1.6s linear infinite;
+  }
+
+  .pattern-dots {
+    background-image: radial-gradient(rgb(43 26 16 / 0.08) 1px, transparent 1px);
+    background-size: 12px 12px;
+  }
+}
+
+@keyframes lz-fade-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes lz-slide-up {
+  from {
+    opacity: 0;
+    transform: translateY(14px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes lz-scale-in {
+  from {
+    opacity: 0;
+    transform: scale(0.97);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes lz-toast {
+  from {
+    opacity: 0;
+    transform: translateY(-10px) scale(0.98);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@keyframes lz-shimmer {
+  from {
+    background-position: 200% 0;
+  }
+  to {
+    background-position: -200% 0;
+  }
+}
