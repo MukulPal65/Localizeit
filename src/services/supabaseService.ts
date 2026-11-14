@@ -493,7 +493,7 @@ export async function verifyPhoneOtp(
   const supabase = getSupabaseClient()
   const cleanPhone = phone.trim()
 
-  if (supabase && isSupabaseConnected()) {
+  if (!isDemoMode && supabase && isSupabaseConnected()) {
     try {
       const { data, error } = await supabase.auth.verifyOtp({
         phone: cleanPhone.startsWith('+') ? cleanPhone : `+91${cleanPhone}`,
